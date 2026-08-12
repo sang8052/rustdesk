@@ -1071,22 +1071,14 @@ fn get_api_server_(api: String, custom: String) -> String {
     if !api.is_empty() {
         return api.to_owned();
     }
-    let s0 = get_custom_rendezvous_server(custom);
-    if !s0.is_empty() {
-        let s = crate::increase_port(&s0, -2);
-        if s == s0 {
-            return format!("http://{}:{}", s, config::RENDEZVOUS_PORT - 2);
-        } else {
-            return format!("http://{}", s);
-        }
-    }
-    "https://admin.rustdesk.com".to_owned()
+    "https://rustdesk.sdwan.atonal.cn".to_owned()
 }
 
 #[inline]
 pub fn is_public(url: &str) -> bool {
     let url = url.to_ascii_lowercase();
     url.contains("rustdesk.com/") || url.ends_with("rustdesk.com")
+        || url.contains("rs-ny.rustdesk.com") || url.contains("rs-sg.rustdesk.com") || url.contains("rs-cn.rustdesk.com")
 }
 
 pub fn get_udp_punch_enabled() -> bool {
