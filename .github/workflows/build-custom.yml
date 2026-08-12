@@ -1,0 +1,17 @@
+name: Build Custom (All Platforms)
+
+on:
+  workflow_dispatch:
+    inputs:
+      upload-tag:
+        description: 'Upload tag name'
+        required: false
+        default: 'custom-build'
+
+jobs:
+  trigger-build:
+    uses: ./.github/workflows/flutter-build.yml
+    with:
+      upload-artifact: true
+      upload-tag: ${{ github.event.inputs.upload-tag }}
+    secrets: inherit
