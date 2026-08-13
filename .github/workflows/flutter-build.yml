@@ -60,6 +60,9 @@ env:
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}-2"
 
+permissions:
+  contents: write
+
 jobs:
   generate-sbom:
     runs-on: ubuntu-latest
